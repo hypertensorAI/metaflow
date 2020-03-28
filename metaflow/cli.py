@@ -40,7 +40,7 @@ LOGGER_BAD_COLOR = 'red'
 try:
     # Python 2
     import cPickle as pickle
-except:
+except ImportError:
     # Python 3
     import pickle
 
@@ -401,6 +401,7 @@ def step(obj,
          fg='magenta',
          bold=False)
 
+    obj.datastore.datastore_root = obj.datastore_root
     if obj.datastore.datastore_root is None:
         obj.datastore.datastore_root = obj.datastore.get_datastore_root_from_config(obj.echo)
 
